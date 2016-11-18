@@ -273,7 +273,7 @@
   CGRect numberFrame = CGRectMake(0, nameHeight, width, CGRectGetHeight(frame) - nameHeight);
   UILabel *numberLabel = [[UILabel alloc] initWithFrame:numberFrame];
   numberLabel.textAlignment = NSTextAlignmentCenter;
-  numberLabel.font = [UIFont systemFontOfSize:18];
+  numberLabel.font = [UIFont boldSystemFontOfSize:17];
   if (isSelection && ! self.isAnimating) {
     numberLabel.textColor = self.selectorLetterTextColor;
   } else {
