@@ -561,7 +561,7 @@
     view.backgroundColor = [UIColor clearColor];
     view.fillCircle = NO;
     view.circleCenter = CGPointMake(width / 2, 20 + (height - 20) / 2);
-    view.circleColor = self.tintColor;
+    view.circleColor = [UIColor clearColor];
     view.userInteractionEnabled = NO;
     _todayView = view;
   }
