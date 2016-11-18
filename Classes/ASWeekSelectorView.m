@@ -477,6 +477,14 @@
   _selectedDate = date;
 
   [self animateSelectionToPreDrag];
+    
+    if ([[NSCalendar currentCalendar] isDateInToday:date]) {
+        self.selectionView.circleColor = [UIColor colorWithRed:0.96 green:0.31 blue:0.31 alpha:1.0];
+        [self.selectionView setNeedsDisplay];
+    } else {
+        self.selectionView.circleColor = [UIColor blackColor];
+        [self.selectionView setNeedsDisplay];
+    }
   
   if ([self.delegate respondsToSelector:@selector(weekSelector:didSelectDate:)]) {
     [self.delegate weekSelector:self didSelectDate:date];
@@ -543,7 +551,7 @@
     view.backgroundColor = self.selectorBackgroundColor;
     view.fillCircle = YES;
     view.circleCenter = CGPointMake(width / 2, 20 + (height - 20) / 2);
-    view.circleColor = self.tintColor;
+    view.circleColor = [UIColor colorWithRed:0.96 green:0.31 blue:0.31 alpha:1.0];
     view.userInteractionEnabled = NO;
     [self insertSubview:view aboveSubview:self.lineView];
     _selectionView = view;
