@@ -264,7 +264,7 @@
   CGRect nameFrame = CGRectMake(0, topPadding, width, nameHeight - topPadding);
   UILabel *letterLabel = [[UILabel alloc] initWithFrame:nameFrame];
   letterLabel.textAlignment = NSTextAlignmentCenter;
-  letterLabel.font = [UIFont systemFontOfSize:9];
+  letterLabel.font = [UIFont systemFontOfSize:12];
   letterLabel.textColor = self.letterTextColor;
   letterLabel.text = [[self.dayNameDateFormatter stringFromDate:date] uppercaseString];
   [wrapper addSubview:letterLabel];
