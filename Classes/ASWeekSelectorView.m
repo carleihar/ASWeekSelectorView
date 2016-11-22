@@ -76,6 +76,14 @@
     [self colorLabelForDate:_selectedDate withTextColor:numberTextColor];
     _selectedDate = selectedDate;
     self.isAnimating = animated;
+      
+      if ([[NSCalendar currentCalendar] isDateInToday:selectedDate]) {
+          self.selectionView.circleColor = [UIColor colorWithRed:0.96 green:0.31 blue:0.31 alpha:1.0];
+          [self.selectionView setNeedsDisplay];
+      } else {
+          self.selectionView.circleColor = [UIColor blackColor];
+          [self.selectionView setNeedsDisplay];
+      }
     
     [UIView animateWithDuration:animated ? 0.25f : 0
                      animations:
