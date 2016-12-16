@@ -108,6 +108,8 @@ FOUNDATION_EXPORT const unsigned char ASWeekSelectorViewVersionString[];
  */
 - (UIColor *)weekSelector:(ASWeekSelectorView *)weekSelector circleColorForDate:(NSDate *)date;
 
+- (UIColor *)weekSelector:(ASWeekSelectorView *)weekSelector filledCircleColorForDate:(NSDate *)date;
+
 /**
  Implement to change the color of the number for the specified date.
  @param date Date for which to customise color (not called for selected date)

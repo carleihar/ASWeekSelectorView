@@ -71,19 +71,31 @@
     [self rebuildWeeks];
   }
   
+    
+    
   if (! [self date:selectedDate matchesDateComponentsOfDate:_selectedDate]) {
     UIColor *numberTextColor = [self numberTextColorForDate:_selectedDate];
     [self colorLabelForDate:_selectedDate withTextColor:numberTextColor];
     _selectedDate = selectedDate;
     self.isAnimating = animated;
       
-      if ([[NSCalendar currentCalendar] isDateInToday:selectedDate]) {
-          self.selectionView.circleColor = [UIColor colorWithRed:0.96 green:0.31 blue:0.31 alpha:1.0];
+      
+      if ([self.delegate respondsToSelector:@selector(weekSelector:filledCircleColorForDate:)]) {
+          UIColor *circleColor = [self.delegate weekSelector:self filledCircleColorForDate:_selectedDate];
+          self.selectionView.circleColor = circleColor;
           [self.selectionView setNeedsDisplay];
       } else {
           self.selectionView.circleColor = [UIColor blackColor];
           [self.selectionView setNeedsDisplay];
       }
+      
+//      if ([[NSCalendar currentCalendar] isDateInToday:selectedDate]) {
+//          self.selectionView.circleColor = [UIColor colorWithRed:0.96 green:0.31 blue:0.31 alpha:1.0];
+//          [self.selectionView setNeedsDisplay];
+//      } else {
+//          self.selectionView.circleColor = [UIColor blackColor];
+//          [self.selectionView setNeedsDisplay];
+//      }
     
     [UIView animateWithDuration:animated ? 0.25f : 0
                      animations:
@@ -486,8 +498,17 @@
 
   [self animateSelectionToPreDrag];
     
-    if ([[NSCalendar currentCalendar] isDateInToday:date]) {
-        self.selectionView.circleColor = [UIColor colorWithRed:0.96 green:0.31 blue:0.31 alpha:1.0];
+//    if ([[NSCalendar currentCalendar] isDateInToday:date]) {
+//        self.selectionView.circleColor = [UIColor colorWithRed:0.96 green:0.31 blue:0.31 alpha:1.0];
+//        [self.selectionView setNeedsDisplay];
+//    } else {
+//        self.selectionView.circleColor = [UIColor blackColor];
+//        [self.selectionView setNeedsDisplay];
+//    }
+    
+    if ([self.delegate respondsToSelector:@selector(weekSelector:filledCircleColorForDate:)]) {
+        UIColor *circleColor = [self.delegate weekSelector:self filledCircleColorForDate:_selectedDate];
+        self.selectionView.circleColor = circleColor;
         [self.selectionView setNeedsDisplay];
     } else {
         self.selectionView.circleColor = [UIColor blackColor];
